@@ -20,23 +20,10 @@ from .models import Cloth_S
 
 @api_view(['POST'])
 def post_cloth(request):
-    photo = request.FILES["photo"]
-    data = json.loads(request.data['data'])
-    # print(photo)
-    # print(data)
-    # data["photo"] = photo
-    # print(request.data.get('data'))
-    #photo = request.data.get('photo')
-    Cloth_S(photo=photo).save()
-    print(photo)
-    data_ = str(photo)
-    print("data"+data_)
-    #serializer = Cloth_SSerializer(data=photo)
-    # print(serializer.is_valid())
-    # if serializer.is_valid():
-    print("inside")
-    data['photo'] = data_
-    print(data)
+    print(request.data)
+    data = request.data.get("data")
+    data["photo"] = request.data.get("photo")
+    print(data["photo"])
     extract_features(data)
     # photo = request.data.get('photo')
     # print(request.data)
@@ -51,14 +38,21 @@ def post_cloth(request):
 
 @api_view(['POST'])
 def delete_cloth(request):
-    delete_extract_features(request.data)
+    data = request.data.get("data")
+    data["photo"] = request.data.get("photo")
+    print(data["photo"])
+    delete_extract_features(data)
+    # delete_extract_features(request.data)
     return Response({'response': 'done'})
 
 
-# @api_view(['POST'])
-# def delete_cloth(request):
-#     #def extract_features_delete(request.data)
-#     pass
+@api_view(['POST'])
+def modify_cloth(request):
+    data = request.data.get("data")
+    data["photo"] = request.data.get("photo")
+    modify_extract_features(data)
+    # modify_extract_features(request.data)
+    return Response({'response': 'done'})
 
 
 # @api_view(['POST'])
