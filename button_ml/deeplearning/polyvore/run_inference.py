@@ -11,16 +11,16 @@ import os
 import json
 
 
-def main():
-    sample_data = {"id": 22,
-                   "clothID": 10,
-                   "season": ["SUMMER", "WINTER"],
-                   "category": "OUTER",
-                   "photo": "20.jpg",
-                   "style": ["SEMI-FORMAL", "CASUAL"],
-                   "outfit": [6]
-                   }
-    extract_features(sample_data["id"], sample_data)
+# def main():
+#     sample_data = {"id": 22,
+#                    "clothID": 10,
+#                    "season": ["SUMMER", "WINTER"],
+#                    "category": "OUTER",
+#                    "photo": "20.jpg",
+#                    "style": ["SEMI-FORMAL", "CASUAL"],
+#                    "outfit": [6]
+#                    }
+#     extract_features(sample_data["id"], sample_data)
 
 
 def delete_extract_features(serializer_data):
@@ -73,7 +73,7 @@ def delete_extract_features(serializer_data):
 
 
 def extract_features(serializer_data):
-    for one_season in serializer_data["season"]:
+    for one_season in serializer_data["season"]:    # json
         json_path = one_season + "_" + str(serializer_data["id"]) + ".json"
 
         if os.path.isfile(json_path):
@@ -82,13 +82,13 @@ def extract_features(serializer_data):
             f.close()
             flag = False
             for one_item in json_dict[0]["items"]:
-                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     flag = True
             if flag:
                 continue
             else:
                 json_dict[0]["items"].append({
-                    "index": serializer_data["photo"].replace(".jpg", "").replace("/media/", "")
+                    "index": serializer_data["photo"].replace(".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", "")
                 })
                 f2 = open(json_path, "w")
                 json.dump(json_dict, f2)
@@ -99,7 +99,7 @@ def extract_features(serializer_data):
             output_data[0]["items"] = []
             output_data[0]["items"].append(dict())
             output_data[0]["items"][0]["index"] = serializer_data["photo"].replace(
-                ".jpg", "").replace("/media/", "")
+                ".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", "")
             output_data[0]["set_id"] = "media"
             f = open(json_path, "w")
             json.dump(output_data, f)
@@ -115,8 +115,7 @@ def extract_features(serializer_data):
 
     g.finalize()
     sess = tf.Session(graph=g)
-    # TODO :: 언니 여기 서버 모델있는 위치로 바꿔야해 ~
-    saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
+    saver.restore(sess, "button_api/model/model_final/model.ckpt-34865")
 
     for one_season in serializer_data["season"]:
         json_path = one_season + "_" + str(serializer_data["id"]) + ".json"
@@ -141,8 +140,7 @@ def extract_features(serializer_data):
                 image_rnn_feat = []
                 ids = []
             for image in image_set["items"][append_from_number:]:
-                filename = os.path.join("", set_id,
-                                        # TODO :: change this path to DJnago MEDIA dir
+                filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
                                         str(image["index"]) + ".jpg")
                 print(filename)
                 with tf.gfile.GFile(filename, "r") as f:
@@ -163,7 +161,6 @@ def extract_features(serializer_data):
 
             f = open(pkl_path, "rb")
             data = pkl.load(f)
-
             data.update(added_test_features)
             f.close()
 
@@ -181,7 +178,7 @@ def extract_features(serializer_data):
                 k = k + 1
                 print(str(k) + " : " + set_id)
                 for image in image_set["items"]:
-                    filename = os.path.join("", set_id,
+                    filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
                                             str(image["index"]) + ".jpg")
                     with tf.gfile.GFile(filename, "r") as f:
                         image_feed = f.read()
