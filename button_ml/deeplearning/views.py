@@ -38,19 +38,21 @@ def post_cloth(request):
 
 @api_view(['POST'])
 def delete_cloth(request):
-    data = request.data.get("data")
-    data["photo"] = request.data.get("photo")
-    print(data["photo"])
-    delete_extract_features(data)
+    print(request.data)
+    # data = request.data.get("data")
+    # data["photo"] = request.data.get("photo")
+    # print(data["photo"])
+    delete_extract_features(request.data)
     # delete_extract_features(request.data)
     return Response({'response': 'done'})
 
 
 @api_view(['POST'])
 def modify_cloth(request):
-    data = request.data.get("data")
-    data["photo"] = request.data.get("photo")
-    modify_extract_features(data)
+    print(request.data)
+    # data = request.data.get("data")
+    # data["photo"] = request.data.get("photo")
+    modify_extract_features(request.data)
     # modify_extract_features(request.data)
     return Response({'response': 'done'})
 

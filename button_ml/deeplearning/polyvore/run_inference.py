@@ -115,7 +115,7 @@ def extract_features(serializer_data):
 
     g.finalize()
     sess = tf.Session(graph=g)
-    saver.restore(sess, "button_api/model/model_final/model.ckpt-34865")
+    saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
 
     for one_season in serializer_data["season"]:
         json_path = one_season + "_" + str(serializer_data["id"]) + ".json"
@@ -295,7 +295,7 @@ def modify_extract_features(serializer_data):
     g.finalize()
     sess = tf.Session(graph=g)
     # TODO ::
-    saver.restore(sess, "button_api/model/model_final/model.ckpt-34865")
+    saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
 
     for one_season in serializer_data["season"]:
         json_path = one_season + "_" + str(serializer_data["id"]) + ".json"
