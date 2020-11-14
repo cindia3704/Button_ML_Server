@@ -79,9 +79,11 @@ def modify_cloth(request):
 @api_view(['POST'])
 def get_set(request):
     decodedSet = jsonpickle.decode(request.data)
-    bi_lstm_input = request.data.get('bi_lstm_input')
-    id = request.data.get('id')
-    style = request.data.get('style')
-    season = request.data.get('season')
+    bi_lstm_input = request.data['bi_lstm_input']
+    id = request.data['id']
+    style = request.data['style']
+    season = request.data['season']
     cloth_set = set_generation(bi_lstm_input, id, style, season)
+    print("cloth_set")
+    print(cloth_set)
     return Response({'clothlist': cloth_set})
