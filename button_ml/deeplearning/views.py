@@ -16,6 +16,8 @@ from rest_framework.decorators import api_view, permission_classes
 from .serializers import Cloth_SSerializer
 import json
 from .models import Cloth_S
+import jsonpickle
+from json import JSONEncoder
 
 
 @api_view(['POST'])
@@ -24,6 +26,10 @@ def post_cloth(request):
     # data = request.data.get("data")
     # data["photo"] = request.data.get("photo")
     # print(data["photo"])
+    decodedSet = jsonpickle.decode(request.data.get('season'))
+    request.data['season'] = decodedSet
+    print(decodedSet)
+    print(request.data)
     extract_features(request.data)
     # photo = request.data.get('photo')
     # print(request.data)
