@@ -141,7 +141,7 @@ def extract_features(serializer_data):
                 ids = []
             for image in image_set["items"][append_from_number:]:
                 filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
-                                        str(image["index"]) + ".jpg")
+                                        str(image["index"]))
                 print(filename)
                 with tf.gfile.GFile(filename, "r") as f:
                     image_feed = f.read()
