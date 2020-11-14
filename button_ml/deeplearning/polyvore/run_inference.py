@@ -99,7 +99,7 @@ def extract_features(serializer_data):
             output_data[0]["items"] = []
             output_data[0]["items"].append(dict())
             output_data[0]["items"][0]["index"] = serializer_data["photo"].replace(
-                ".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", "")
+                "/home/buttonteam/Button_Server2/button/media/", "")
             output_data[0]["set_id"] = "media"
             f = open(json_path, "w")
             json.dump(output_data, f)
