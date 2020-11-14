@@ -82,13 +82,13 @@ def extract_features(serializer_data):
             f.close()
             flag = False
             for one_item in json_dict[0]["items"]:
-                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", ""):
+                if one_item["index"] == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     flag = True
             if flag:
                 continue
             else:
                 json_dict[0]["items"].append({
-                    "index": serializer_data["photo"].replace(".jpg", "").replace("/home/buttonteam/Button_Server2/button/media/", "")
+                    "index": serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", "")
                 })
                 f2 = open(json_path, "w")
                 json.dump(json_dict, f2)
@@ -141,7 +141,7 @@ def extract_features(serializer_data):
                 ids = []
             for image in image_set["items"][append_from_number:]:
                 filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
-                                        str(image["index"])+'jpg')
+                                        str(image["index"]))
                 print(filename)
                 with tf.gfile.GFile(filename, "r") as f:
                     image_feed = f.read()
@@ -179,7 +179,7 @@ def extract_features(serializer_data):
                 print(str(k) + " : " + set_id)
                 for image in image_set["items"]:
                     filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
-                                            str(image["index"])+'jpg')
+                                            str(image["index"]))
                     with tf.gfile.GFile(filename, "r") as f:
                         image_feed = f.read()
 
