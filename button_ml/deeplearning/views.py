@@ -26,11 +26,14 @@ def post_cloth(request):
     # data = request.data.get("data")
     # data["photo"] = request.data.get("photo")
     # print(data["photo"])
-    decodedSet = jsonpickle.decode(request.data.get('season'))
-    request.data['season'] = decodedSet
+    #decodedSet = jsonpickle.decode(request.data.get('season'))
+    #request.data['season'] = decodedSet
+    # print(decodedSet)
+    decodedSet = jsonpickle.decode(request.data)
     print(decodedSet)
-    print(request.data)
-    extract_features(request.data)
+    print("start extract")
+    extract_features(decodedSet)
+    print("doen extract")
     # photo = request.data.get('photo')
     # print(request.data)
     return Response({'response': 'done'})
