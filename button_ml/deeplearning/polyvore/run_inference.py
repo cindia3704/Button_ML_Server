@@ -35,7 +35,7 @@ def delete_extract_features(serializer_data):
 
             find_idx = -1
             for i, one_item in enumerate(json_dict[0]["items"]):
-                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_item["index"] == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     find_idx = i
                     break
 
@@ -55,7 +55,7 @@ def delete_extract_features(serializer_data):
 
             search_key = None
             for one_media in a.keys():
-                if one_media.replace("media_", "") == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_media.replace("media_", "") == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     search_key = one_media
                     break
 
@@ -221,7 +221,7 @@ def modify_extract_features(serializer_data):
 
             find_idx = -1
             for i, one_item in enumerate(json_dict[0]["items"]):
-                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_item["index"] == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     find_idx = i
                     break
             if find_idx != -1:
@@ -240,7 +240,7 @@ def modify_extract_features(serializer_data):
 
             search_key = None
             for one_media in a.keys():
-                if one_media.replace("media_", "") == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_media.replace("media_", "") == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     search_key = one_media
                     break
 
@@ -261,13 +261,13 @@ def modify_extract_features(serializer_data):
             f.close()
             flag = False
             for one_item in json_dict[0]["items"]:
-                if one_item["index"] == serializer_data["photo"].replace(".jpg", "").replace("/media/", ""):
+                if one_item["index"] == serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", ""):
                     flag = True
             if flag:
                 continue
             else:
                 json_dict[0]["items"].append({
-                    "index": serializer_data["photo"].replace(".jpg", "").replace("/media/", "")
+                    "index": serializer_data["photo"].replace("/home/buttonteam/Button_Server2/button/media/", "")
                 })
                 f2 = open(json_path, "w")
                 json.dump(json_dict, f2)
@@ -278,7 +278,7 @@ def modify_extract_features(serializer_data):
             output_data[0]["items"] = []
             output_data[0]["items"].append(dict())
             output_data[0]["items"][0]["index"] = serializer_data["photo"].replace(
-                ".jpg", "").replace("/media/", "")
+                "/home/buttonteam/Button_Server2/button/media/", "")
             output_data[0]["set_id"] = "media"
             f = open(json_path, "w")
             json.dump(output_data, f)
@@ -295,7 +295,7 @@ def modify_extract_features(serializer_data):
     g.finalize()
     sess = tf.Session(graph=g)
     # TODO ::
-    saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
+    saver.restore(sess, "button_api/model/model_final/model.ckpt-34865")
 
     for one_season in serializer_data["season"]:
         json_path = one_season + "_" + str(serializer_data["id"]) + ".json"
@@ -320,9 +320,8 @@ def modify_extract_features(serializer_data):
                 image_rnn_feat = []
                 ids = []
             for image in image_set["items"][append_from_number:]:
-                filename = os.path.join("", set_id,
-                                        # TODO ::
-                                        str(image["index"]) + ".jpg")
+                filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
+                                        str(image["index"]))
                 print(filename)
                 with tf.gfile.GFile(filename, "r") as f:
                     image_feed = f.read()
@@ -359,8 +358,8 @@ def modify_extract_features(serializer_data):
                 k = k + 1
                 print(str(k) + " : " + set_id)
                 for image in image_set["items"]:
-                    filename = os.path.join("images", set_id,
-                                            str(image["index"]) + ".jpg")
+                    filename = os.path.join("/home/buttonteam/Button_Server2/button/", set_id,
+                                            str(image["index"]))
                     with tf.gfile.GFile(filename, "r") as f:
                         image_feed = f.read()
 

@@ -51,7 +51,12 @@ def delete_cloth(request):
     # data = request.data.get("data")
     # data["photo"] = request.data.get("photo")
     # print(data["photo"])
-    delete_extract_features(request.data)
+    decodedSet = jsonpickle.decode(request.data)
+    print(decodedSet)
+    print("start del extract")
+    delete_extract_features(decodedSet)
+    print("doen del extract")
+
     # delete_extract_features(request.data)
     return Response({'response': 'done'})
 
@@ -61,7 +66,12 @@ def modify_cloth(request):
     print(request.data)
     # data = request.data.get("data")
     # data["photo"] = request.data.get("photo")
-    modify_extract_features(request.data)
+    decodedSet = jsonpickle.decode(request.data)
+    print(decodedSet)
+    print("start mod extract")
+    modify_extract_features(decodedSet)
+    # delete_extract_features(decodedSet)
+    print("doen mod extract")
     # modify_extract_features(request.data)
     return Response({'response': 'done'})
 
