@@ -41,7 +41,8 @@ def set_generation(bi_lstm_input, id, style, season):
                 test_data = pkl.load(f)
 
             test_ids = list(test_data.keys())
-
+            print("test_ids:")
+            print(test_ids)
             test_feat = np.zeros((len(test_ids) + 1,
                                   len(test_data[test_ids[0]]["image_rnn_feat"])))
             test_emb = np.zeros((len(test_ids),
@@ -251,7 +252,7 @@ def set_generation(bi_lstm_input, id, style, season):
 
             # img_number = bi_lstm_input.replace("images/media", "").replace("201820205/", "").replace(".jpg", "").replace("/", "")
             # set_name = [str(str("201820205") + "_" + str(img_number))]
-            set_name = [bi_lstm_input]
+            set_name = [bi_lstm_input.replace]
             print(set_name)
 
             rnn_sets = run_set_inference(sess, set_name, test_ids,
