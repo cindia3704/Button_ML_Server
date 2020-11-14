@@ -10,7 +10,8 @@ from rest_framework.response import Response
 from rest_framework import status, views
 from rest_framework.views import APIView
 from . import polyvore
-from .polyvore import run_inference
+from .polyvore import run_inference, set_generation
+from .polyvore.set_generation import set_generation
 from .polyvore.run_inference import extract_features, delete_extract_features, modify_extract_features
 from rest_framework.decorators import api_view, permission_classes
 from .serializers import Cloth_SSerializer
