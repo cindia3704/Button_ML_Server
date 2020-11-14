@@ -76,7 +76,13 @@ def modify_cloth(request):
     return Response({'response': 'done'})
 
 
-# @api_view(['POST'])
-# def get_set(request):
-#     #def extract_features_delete(request.data)
-#     pass
+@api_view(['POST'])
+def get_set(request):
+    decodedSet = jsonpickle.decode(request.data)
+    bi_lstm_input = request.data.get('bi_lstm_input')
+    id = request.data.get('id')
+    style = request.data.get('style')
+    season = request.data.get('season')
+    cloth_set = set_generation(bi_lstm_input, id, style, season)
+    return cloth_set
+    pass
