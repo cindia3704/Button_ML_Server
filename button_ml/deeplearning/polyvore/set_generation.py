@@ -240,7 +240,8 @@ def set_generation(bi_lstm_input, id, style, season):
 
             # Read word name
             # TO DO :: Final word dict 경로 넣기!!!!!!!!!!!!!!!!!!
-            words = open("final_word_dict.txt").read().splitlines()
+            words = open(
+                "deeplearning/final_word_dict.txt").read().splitlines()
             for i, w in enumerate(words):
                 words[i] = w.split()[0]
 
