@@ -40,7 +40,7 @@ def set_generation(bi_lstm_input, id, style, season):
             with open(pkl_path, "rb") as f:
                 test_data = pkl.load(f)
 
-            test_ids = list(test_data.keys())
+            test_ids = list(test_data.keys().replace('media_', ""))
             print("test_ids:")
             print(test_ids)
             test_feat = np.zeros((len(test_ids) + 1,
