@@ -84,5 +84,4 @@ def get_set(request):
     style = request.data.get('style')
     season = request.data.get('season')
     cloth_set = set_generation(bi_lstm_input, id, style, season)
-    return cloth_set
-    pass
+    return Response({'clothlist': cloth_set})
