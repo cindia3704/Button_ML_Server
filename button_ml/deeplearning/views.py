@@ -105,4 +105,8 @@ def get_set(request):
     #     'https://capstonebutton.kro.kr:9000/getSetRec/', json=encoded)
     print("clo:")
     print(clo)
-    return HttpResponse({'clothlist': clo})
+    send_data{
+        'clothlist': clo
+    }
+    encoded = jsonpickle.encode(send_data)
+    return HttpResponse(json=encoded)
