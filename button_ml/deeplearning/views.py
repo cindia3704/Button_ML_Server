@@ -20,6 +20,7 @@ import json
 from .models import Cloth_S
 import jsonpickle
 from json import JSONEncoder
+import requests
 
 
 @api_view(['POST'])
