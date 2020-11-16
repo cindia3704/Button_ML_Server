@@ -21,6 +21,7 @@ from .models import Cloth_S
 import jsonpickle
 from json import JSONEncoder
 import requests
+from django.http import JsonResponse
 
 
 @api_view(['POST'])
@@ -109,4 +110,4 @@ def get_set(request):
         'clothlist': clo
     }
     encoded = jsonpickle.encode(send_data)
-    return HttpResponse(json=encoded)
+    return JsonResponse(encoded)
