@@ -97,5 +97,6 @@ def get_set(request):
         'clothlist': cloth_set
     }
     encoded = jsonpickle.encode(send_data)
-    r = requests.post('https://capstonebutton:9000/getSetRec/', json=encoded)
+    r = requests.post(
+        'https://capstonebutton.kro.kr:9000/getSetRec/', json=encoded)
     return Response({'clothlist': cloth_set})
