@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import post_cloth, get_set, modify_cloth, delete_cloth,
+from .views import post_cloth, get_set, modify_cloth, delete_cloth
 from . import views
 # , change_cloth, delete_cloth, get_set
 
