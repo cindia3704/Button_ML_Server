@@ -33,8 +33,9 @@ def set_generation(bi_lstm_input, id, style, season):
         pkl_path = season + "_" + str(id) + ".pkl"
         # pkl_path = "HWAN_3.pkl"
 
-       with tf.Session() as sess:
-            saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
+        with tf.Session() as sess:
+            saver.restore(
+                sess, "deeplearning/model/model_final/model.ckpt-34865")
             # saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
             with open(pkl_path, "rb") as f:
                 test_data = pkl.load(f)
