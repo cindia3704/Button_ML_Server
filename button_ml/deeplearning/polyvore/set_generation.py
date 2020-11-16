@@ -45,6 +45,8 @@ def set_generation(bi_lstm_input, id, style, season):
             print(test_ids)
             print('test_ids[0] ')
             print(test_ids[0])
+            print("TEST DATA____")
+            print(test_data)
             print('test_data[test_ids[0]];')
             print(test_data[test_ids[0]])
             # print('test_ids[0][rnn_feat]')
