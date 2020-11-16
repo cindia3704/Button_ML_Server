@@ -275,8 +275,9 @@ def set_generation(bi_lstm_input, id, style, season):
                            'toe']
             semi_formal_list = ['flora', 'wool', 'gold', 'silk', 'flower', 'metallic', 'scarf', 'cashmere',
                                 'wedding', 'skater', 'flare', 'shirts', 'necklace', 'suede']
-            casual_list = ['classic', 'crop']
 
+            casual_list = ['jean', 'denim', 'skinny', 'crop', 'classic', 'beanie',
+                           'pullover', 'knitwear', 'jersey', 'white', 'new', 'sleeve', 'leather', 'blue']
             outdoor_list = ['shorts', 'outdoor', 'nike',
                             'running', 'baseball', 'sports', 'short']
             vacance_list = ['summer', 'bikini', 'denim', 'shorts', 'sunglasses', 'floral', 'short', 'pants',
