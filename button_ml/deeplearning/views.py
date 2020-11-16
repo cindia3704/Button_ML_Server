@@ -90,9 +90,10 @@ def get_set(request):
     cloth_set = set_generation(bi_lstm_input, id, style, season)
     print("cloth_set")
     print(cloth_set)
+    print(len(cloth_set))
     clo = []
     for clothes in cloth_set:
-        clo.append(""+str(cloth_set))
+        clo.append(str(clothes))
     # send_data = {
     #     "id": id,
     #     "rand_cloth": bi_lstm_input,
