@@ -79,7 +79,7 @@ def modify_cloth(request):
     return Response({'response': 'done'})
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def get_set(request):
     decodedSet = jsonpickle.decode(request.data)
     print(decodedSet)
