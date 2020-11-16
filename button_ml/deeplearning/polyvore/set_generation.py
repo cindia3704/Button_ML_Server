@@ -261,8 +261,7 @@ def set_generation(bi_lstm_input, id, style, season):
 
             # img_number = bi_lstm_input.replace("images/media", "").replace("201820205/", "").replace(".jpg", "").replace("/", "")
             # set_name = [str(str("201820205") + "_" + str(img_number))]
-            set_name = [bi_lstm_input.replace(
-                "/home/buttonteam/Button_Server2/button/media/", "")]
+            set_name = [bi_lstm_input]
             print(set_name)
 
             rnn_sets = run_set_inference(sess, set_name, test_ids,
