@@ -34,15 +34,15 @@ def set_generation(bi_lstm_input, id, style, season):
         #pkl_path = "HWAN_3.pkl"
 
         with tf.Session() as sess:
-            #saver.restore(sess, "model/model_final/model.ckpt-34865")
-            saver.restore(
-                sess, "deeplearning/model/model_final/model.ckpt-34865")
+            saver.restore(sess, "model/model_final/model.ckpt-34865")
+            # saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
             with open(pkl_path, "rb") as f:
                 test_data = pkl.load(f)
-
-            test_ids = list(test_data.keys().replace('media_', ""))
-            print("test_ids:")
+            pre_test_ids = list(test_data.keys())
+            test_ids = ["/home/buttonteam/Button_Server2/button/media/" + item.replace("_", "/") + ".jpg" for item in
+                        pre_test_ids]
             print(test_ids)
+            # print(test_ids)
             test_feat = np.zeros((len(test_ids) + 1,
                                   len(test_data[test_ids[0]]["image_rnn_feat"])))
             test_emb = np.zeros((len(test_ids),
@@ -252,7 +252,8 @@ def set_generation(bi_lstm_input, id, style, season):
 
             # img_number = bi_lstm_input.replace("images/media", "").replace("201820205/", "").replace(".jpg", "").replace("/", "")
             # set_name = [str(str("201820205") + "_" + str(img_number))]
-            set_name = [bi_lstm_input.replace]
+            set_name = [bi_lstm_input.replace(
+                "/home/buttonteam/Button_Server2/button/media/", "")]
             print(set_name)
 
             rnn_sets = run_set_inference(sess, set_name, test_ids,
