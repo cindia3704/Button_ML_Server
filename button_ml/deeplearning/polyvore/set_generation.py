@@ -31,20 +31,21 @@ def set_generation(bi_lstm_input, id, style, season):
 
         g.finalize()
         pkl_path = season + "_" + str(id) + ".pkl"
-        #pkl_path = "HWAN_3.pkl"
+        # pkl_path = "HWAN_3.pkl"
 
-        with tf.Session() as sess:
-            saver.restore(
-                sess, "deeplearning/model/model_final/model.ckpt-34865")
+       with tf.Session() as sess:
+            saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
             # saver.restore(sess, "deeplearning/model/model_final/model.ckpt-34865")
             with open(pkl_path, "rb") as f:
                 test_data = pkl.load(f)
-            test_ids = list(test_data.keys())
+            pre_test_ids = list(test_data.keys())
+            test_ids = ["/home/buttonteam/Button_Server2/button/media/" + item.replace("_", "/") for item in
+                        pre_test_ids]
             print(test_ids)
 
-            #print('test_ids[0] ')
+            # print('test_ids[0] ')
             # print(test_ids[0])
-            #print("TEST DATA____")
+            # print("TEST DATA____")
             # print(test_data)
             # print('test_data[test_ids[0]];')
             # print(test_data[test_ids[0]])
