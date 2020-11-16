@@ -43,7 +43,12 @@ def set_generation(bi_lstm_input, id, style, season):
             test_ids = ["/home/buttonteam/Button_Server2/button/" + item.replace("_", "/") for item in
                         pre_test_ids]
             print(test_ids)
-            # print(test_ids)
+            print('test_ids[0] ')
+            print(test_ids[0])
+            print('test_data[test_ids[0]];')
+            print(test_data[test_ids[0]])
+            # print('test_ids[0][rnn_feat]')
+
             test_feat = np.zeros((len(test_ids) + 1,
                                   len(test_data[test_ids[0]]["image_rnn_feat"])))
             test_emb = np.zeros((len(test_ids),
