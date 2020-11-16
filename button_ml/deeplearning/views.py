@@ -90,6 +90,9 @@ def get_set(request):
     print("cloth_set")
     print(cloth_set)
     send_data = {
+        "id": id,
+        "rand_cloth": bi_lstm_input,
+        "season": season,
         'clothlist': cloth_set
     }
     encoded = jsonpickle.encode(send_data)
