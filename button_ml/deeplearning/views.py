@@ -90,13 +90,13 @@ def get_set(request):
     cloth_set = set_generation(bi_lstm_input, id, style, season)
     print("cloth_set")
     print(cloth_set)
-    send_data = {
-        "id": id,
-        "rand_cloth": bi_lstm_input,
-        "season": season,
-        'clothlist': cloth_set
-    }
-    encoded = jsonpickle.encode(send_data)
-    r = requests.post(
-        'https://capstonebutton.kro.kr:9000/getSetRec/', json=encoded)
-    return Response({'clothlist': cloth_set})
+    # send_data = {
+    #     "id": id,
+    #     "rand_cloth": bi_lstm_input,
+    #     "season": season,
+    #     'clothlist': cloth_set
+    # }
+    # encoded = jsonpickle.encode(send_data)
+    # r = requests.post(
+    #     'https://capstonebutton.kro.kr:9000/getSetRec/', json=encoded)
+    return HttpResponse({'clothlist': cloth_set})
