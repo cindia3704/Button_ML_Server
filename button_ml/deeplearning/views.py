@@ -89,4 +89,9 @@ def get_set(request):
     cloth_set = set_generation(bi_lstm_input, id, style, season)
     print("cloth_set")
     print(cloth_set)
+    send_data = {
+        'clothlist': cloth_set
+    }
+    encoded = jsonpickle.encode(send_data)
+    r = request.post('https://capstonebutton:9000/getSetRec/', json=encoded)
     return Response({'clothlist': cloth_set})
