@@ -110,4 +110,4 @@ def get_set(request):
         'clothlist': clo
     }
     encoded = jsonpickle.encode(send_data)
-    return JsonResponse(encoded)
+    return JsonResponse(send_data, safe=False)
