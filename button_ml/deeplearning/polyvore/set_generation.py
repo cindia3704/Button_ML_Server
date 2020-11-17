@@ -272,23 +272,26 @@ def set_generation(bi_lstm_input, id, style, season):
             word_query = style
 
             formal_list = ['christian', 'marni', 'bags',
-                'clutch', 'classic', 'toe']  # formal 라벨 리스트
-                           'toe']
-            semi_formal_list = ['flora', 'wool', 'silk', 'metallic', 'cashmere', 'wedding', 'skater', 'shirts', 'necklace', 'suede']  # semi-formal 라벨 리스트
-            casual_list= ['jean', 'denim', 'skinny', 'crop', 'beanie', 'jersey', 'white', 'sunglasses', 'new', 'pink', 'rose', 'set', 'green', 'leather', 'blue']# casual 라벨 리스트
-            outdoor_list = ['outdoor', 'nike', 'baseball', 'sports']   # outdoor 라벨 리스트
-            vacance_list = ['summer', 'bikini', 'denim', 'shorts', 'sunglasses', 'floral', 'short', 'pants', 'island']  # vacance 라벨 리스트
+                           'clutch', 'classic', 'toe']  # formal 라벨 리스트
+            semi_formal_list = ['flora', 'wool', 'silk', 'metallic', 'cashmere',
+                                'wedding', 'skater', 'shirts', 'necklace', 'suede']  # semi-formal 라벨 리스트
+            casual_list = ['jean', 'denim', 'skinny', 'crop', 'beanie', 'jersey', 'white',
+                           'sunglasses', 'new', 'pink', 'rose', 'set', 'green', 'leather', 'blue']  # casual 라벨 리스트
+            outdoor_list = ['outdoor', 'nike',
+                            'baseball', 'sports']   # outdoor 라벨 리스트
+            vacance_list = ['summer', 'bikini', 'denim', 'shorts', 'sunglasses',
+                            'floral', 'short', 'pants', 'island']  # vacance 라벨 리스트
 
             if word_query == 'FORMAL':
-                random_word_query= random.choice(formal_list)
+                random_word_query = random.choice(formal_list)
             elif word_query == 'SEMI-FORMAL':
-                random_word_query= random.choice(semi_formal_list)
+                random_word_query = random.choice(semi_formal_list)
             elif word_query == 'CASUAL':
-                random_word_query= random.choice(casual_list)
+                random_word_query = random.choice(casual_list)
             elif word_query == 'OUTDOOR':
-                random_word_query= random.choice(outdoor_list)
+                random_word_query = random.choice(outdoor_list)
             elif word_query == 'VACANCE':
-                random_word_query= random.choice(vacance_list)
+                random_word_query = random.choice(vacance_list)
             else:
                 print("잘못된 스타일")
 
@@ -296,7 +299,7 @@ def set_generation(bi_lstm_input, id, style, season):
 
             if random_word_query != "":
                 # Get the indices of images.
-                test_idx= []
+                test_idx = []
                 for name in set_name:
                     try:
                         test_idx.append(test_ids.index(name))
@@ -305,10 +308,10 @@ def set_generation(bi_lstm_input, id, style, season):
                         return
 
                     # Calculate the word embedding
-                random_word_query= [i + 1 for i in range(len(words))
+                random_word_query = [i + 1 for i in range(len(words))
                                      if words[i] in random_word_query.split()]
                 # print(random_word_query)
-                query_emb= norm_row(
+                query_emb = norm_row(
                     np.sum(word_emb[random_word_query], axis=0))
 
                 if style == "CASUAL":                              # 여기서 디폴트 처리 해야함 ㅠㅠ 이씽 ㅠㅠㅠㅠㅠ
