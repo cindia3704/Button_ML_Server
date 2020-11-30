@@ -91,9 +91,10 @@ def get_set(request):
     print("cloth_set")
     print(cloth_set)
     # print(len(cloth_set))
-    clo = []
-    for clothes in cloth_set:
-        clo.append(str(clothes))
+    # clo = []
+    # if(len(cloth_set) > 0):
+    #     for clothes in cloth_set:
+    #         clo.append(str(clothes))
     # send_data = {
     #     "id": id,
     #     "rand_cloth": bi_lstm_input,
