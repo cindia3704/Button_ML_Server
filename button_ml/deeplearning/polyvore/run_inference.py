@@ -351,7 +351,7 @@ def modify_extract_features(serializer_data):
                                                  model.rnn_image_embeddings],
                                                 feed_dict={"image_feed:0": image_feed})
 
-                    image_name = set_id + "_" + str(image["index"])
+                    image_name = set_id + str(image["index"])
                     test_features[image_name] = dict()
                     test_features[image_name]["image_feat"] = np.squeeze(feat)
                     test_features[image_name]["image_rnn_feat"] = np.squeeze(
