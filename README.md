@@ -2,6 +2,9 @@
 
 안드로이드 어플 'Button'의 딥러닝 기능과 연결한 서버입니다.    
 This is a deep learning server for an android application called "Button"
+   
+딥러닝 모델은 "Learning Fashion Compatibility with Bidirectional LSTMs"라는 논문의 [코드](https://github.com/xthan/polyvore)에서 제공해준 Pre-trained 모델을 사용하였습니다. 
+
 _______________      
 #### 프로젝트 기능 
    1. 로그인 및 회원가입 
